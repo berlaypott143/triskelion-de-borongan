@@ -1,7 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const triskelionDB = require("./triskelionDB");
 const app = express();
 const PORT = 3000;
+
+
+// MIddleware
+app.use(cors());
 
 app.get("/", (req, res) => {
 	res.send("<h1>HELLO FROM SABANG TRISKELION</h1>");
