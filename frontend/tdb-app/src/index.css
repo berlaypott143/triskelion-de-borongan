@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+html,
+body,
+#root,
+.app,
+.content {
+	height: 100%;
+	width: 100%;
+	font-family: "Roboto", sans-serif;
+}
+
+.app {
+	display: flex;
+	position: relative;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Scrollbar-Track */
+::-webkit-scrollbar-track {
+	background: #e0e0e0;
+}
+
+/* Scrollbar-Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Scrollbar on hover*/
+::-webkit-scrollbar-track {
+	background: #555;
+}
