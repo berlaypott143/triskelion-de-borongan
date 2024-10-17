@@ -22,6 +22,7 @@ function App() {
               <Routes>
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/community-chapters' element={<CommunityChapters />} />
+                <Route path='/community-chapters/:chapterName' element={<CommunityChapters />} />
                 {/*<Route path='/' element={<Dashboard />} />*/}
                 {/*<Route path='/' element={<Dashboard />} />*/}
                 {/*<Route path='/' element={<Dashboard />} />*/}
