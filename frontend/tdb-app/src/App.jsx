@@ -5,6 +5,7 @@ import CustomSidebar from './scenes/global/CustomSidebar'
 import Dashboard from './scenes/dashboard/index'
 import { Routes, Route } from 'react-router-dom'
 import CommunityChapters from "./scenes/community_chapters"
+import Contacts from "./scenes/contacts"
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -23,7 +24,7 @@ function App() {
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/community-chapters' element={<CommunityChapters />} />
                 <Route path='/community-chapters/:chapterName' element={<CommunityChapters />} />
-                {/*<Route path='/' element={<Dashboard />} />*/}
+                <Route path='/contacts' element={<Contacts />} />
                 {/*<Route path='/' element={<Dashboard />} />*/}
                 {/*<Route path='/' element={<Dashboard />} />*/}
               </Routes>

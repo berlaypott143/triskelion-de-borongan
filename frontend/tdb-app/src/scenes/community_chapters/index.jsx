@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Typography, Box, useTheme } from "@mui/material";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 
@@ -74,12 +74,12 @@ const CommunityChapters = () => {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },
-        { field: 'name', headerName: 'Name', width: 150 },
-        { field: 'alexis_name', headerName: 'Alexis Name', width: 150 },
+        { field: 'name', headerName: 'Name', width: 150, flex: 1 },
+        { field: 'alexis_name', headerName: 'Alexis Name', width: 150, flex: 1 },
         { field: 'chapter', headerName: 'Chapter', width: 170 },
-        { field: 'date_of_survival', headerName: 'Date of Survival', width: 150 },
-        { field: 'gt', headerName: 'Grand Triskelion', width: 150 },
-        { field: 'mi', headerName: 'MI', width: 150 },
+        { field: 'date_of_survival', headerName: 'Date of Survival', width: 150, flex: 1 },
+        { field: 'gt', headerName: 'Grand Triskelion', width: 150, flex: 1 },
+        { field: 'mi', headerName: 'MI', width: 150, flex: 1 },
         // Add more fields based on your PostgreSQL data structure
     ];
 
@@ -101,7 +101,7 @@ const CommunityChapters = () => {
                     "& .name-column--cell": {
                         color: colors.accent[400],
                     },
-                    "& .MuiDataGrid-columnHeaders": {
+                    "& .MuiDataGrid-columnHeader": {
                         backgroundColor: colors.primary[700],
                         borderBottom: "none",
                     },
@@ -127,6 +127,7 @@ const CommunityChapters = () => {
                         rowsPerPageOptions={[5]}
                         getRowId={(row) => row.id}  // Specify custom row id
                         onRowClick={(params) => fetchMembers(params.row.chapter)}  // Fetch members on row click
+                        slots={{ toolbar: GridToolbar }}
                     />
                 ) : (
                     <Box>
@@ -144,6 +145,7 @@ const CommunityChapters = () => {
                             rowsPerPageOptions={[5]}
                             checkboxSelection
                             getRowId={(row) => row.id}  // Ensure member rows also have unique ids
+                            slots={{ toolbar: GridToolbar }}
                         />
                     </Box>
                 )}
