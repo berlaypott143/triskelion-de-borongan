@@ -6,6 +6,7 @@ import Dashboard from './scenes/dashboard/index'
 import { Routes, Route } from 'react-router-dom'
 import CommunityChapters from "./scenes/community_chapters"
 import Contacts from "./scenes/contacts"
+import Form from "./scenes/form"
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -25,7 +26,7 @@ function App() {
                 <Route path='/community-chapters' element={<CommunityChapters />} />
                 <Route path='/community-chapters/:chapterName' element={<CommunityChapters />} />
                 <Route path='/contacts' element={<Contacts />} />
-                {/*<Route path='/' element={<Dashboard />} />*/}
+                <Route path='/form' element={<Form />} />
                 {/*<Route path='/' element={<Dashboard />} />*/}
               </Routes>
             </main>

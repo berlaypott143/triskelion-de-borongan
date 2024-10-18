@@ -10,6 +10,7 @@ import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
 import HelpCenterOutlinedIcon from '@mui/icons-material/HelpCenterOutlined';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import Diversity2Icon from '@mui/icons-material/Diversity2';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import triskelionImage from '../../assets/triskelion.jpg';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -51,6 +52,8 @@ const CustomSidebar = () => {
             setSelected('About Information');
         } else if (path === '/help') {
             setSelected('Help Information');
+        } else if (path === '/form') {
+            setSelected('Form');
         } else {
             setSelected('Dashboard');
         }
@@ -194,6 +197,13 @@ const CustomSidebar = () => {
                             title='Contacts Information'
                             to='/contacts'
                             icon={<ContactPageOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+                        <Item
+                            title='Create User'
+                            to='/form'
+                            icon={<AccountCircleOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
