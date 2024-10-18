@@ -80,6 +80,7 @@ const CommunityChapters = () => {
         { field: 'date_of_survival', headerName: 'Date of Survival', width: 150, flex: 1 },
         { field: 'gt', headerName: 'Grand Triskelion', width: 150, flex: 1 },
         { field: 'mi', headerName: 'MI', width: 150, flex: 1 },
+        { field: 'batch_name', headerName: 'Batch Name', width: 150, flex: 1 },
         // Add more fields based on your PostgreSQL data structure
     ];
 

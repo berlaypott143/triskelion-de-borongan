@@ -1,38 +1,69 @@
-import { Box, Button, TextField, Typography } from '@mui/material'
+import { Box, Button, TextField } from '@mui/material'
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Header from '../../components/Header';
 
 const initialValues = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    contact: '',
-    address: '',
+    name: '',
     alexisName: '',
     chapter: '',
     dateOfSurvival: '',
     gt: '',
     mi: '',
+    batchName: '',
 }
 
-const phoneRegEx = /^(\+63)?(9\d{9}|(2|3[02]|4[32]|5[45]|6[34]|7[2478]|8[23]|9[45])?\d{7})$/
+
+// Optional: For future use
+//const phoneRegEx = /^(\+63)?(9\d{9}|(2|3[02]|4[32]|5[45]|6[34]|7[2478]|8[23]|9[45])?\d{7})$/
+const dateRegEx = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/
+
 
 
 // see yup docs
 const userSchema = yup.object().shape({
-    firstName: yup.string().required('required'),
-    lastName: yup.string().required('required'),
-    email: yup.string().email('invalid email').required('required'),
-    contact: yup.string().matches(phoneRegEx, 'invalid phone number').required('required'),
-    address: yup.string().required('required'),
+    name: yup.string().required('required'),
+    alexisName: yup.string().required('required'),
+    chapter: yup.string().required('required'),
+    dateOfSurvival: yup.string().matches(dateRegEx, 'Invalid date!').required('required'),
+    gt: yup.string().required('required'),
+    mi: yup.string().required('required'),
+    batchName: yup.string().required('required'),
+    //lastName: yup.string().required('required'),
+    //email: yup.string().email('invalid email').required('required'),
+    //contact: yup.string().matches(phoneRegEx, 'invalid phone number').required('required'),
+    //address: yup.string().required('required'),
 })
 
 const Form = () => {
     const isNonMobile = useMediaQuery('(min-width:600px)');
-    const handleFormSubmit = (values) => {
-        console.log(values);
+
+
+    const handleFormSubmit = async (values) => {
+        try {
+            const response = await fetch(`http://localhost:3000/chapter/${values.chapter}/add-member`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": 'application/json'
+                },
+
+                body: JSON.stringify(values) // Sending form data as JSON
+            });
+
+
+            // Making sure there is a response data 
+            const data = await response.json();
+            if (response.ok) {
+                alert('Member added successfully!');
+                console.log(data);
+            } else {
+                alert(`Failed to add member: ${data.message}`);
+            }
+
+        } catch (err) {
+            console.error('Error in submitting form!', err)
+        }
     }
 
     return (
@@ -67,26 +98,13 @@ const Form = () => {
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="First Name"
+                                label="Complete Name"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.firstName}
-                                name="firstName"
-                                error={!!touched.firstName && !!errors.firstName}
-                                helperText={touched.firstName && errors.firstName}
-                                sx={{ gridColumn: 'span 2' }}
-                            />
-                            <TextField
-                                fullWidth
-                                variant="filled"
-                                type="text"
-                                label="Last Name"
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                                value={values.lastName}
-                                name="lastName"
-                                error={!!touched.lastName && !!errors.lastName}
-                                helperText={touched.lastName && errors.lastName}
+                                value={values.name}
+                                name="name"
+                                error={!!touched.name && !!errors.name}
+                                helperText={touched.name && errors.name}
                                 sx={{ gridColumn: 'span 2' }}
                             />
                             <TextField
@@ -100,7 +118,7 @@ const Form = () => {
                                 name="alexisName"
                                 error={!!touched.alexisName && !!errors.alexisName}
                                 helperText={touched.alexisName && errors.alexisName}
-                                sx={{ gridColumn: 'span 4' }}
+                                sx={{ gridColumn: 'span 2' }}
                             />
                             <TextField
                                 fullWidth
@@ -119,7 +137,7 @@ const Form = () => {
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="Date Of Survival"
+                                label="Date Of Survival Format: YYYY-MM-DD"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
                                 value={values.dateOfSurvival}
@@ -154,58 +172,18 @@ const Form = () => {
                                 helperText={touched.mi && errors.mi}
                                 sx={{ gridColumn: 'span 2' }}
                             />
-                        </Box>
-                        <Typography variant='h6' color='secondary' mt="30px">
-                            Additional Information
-                        </Typography>
-                        <Box
-                            display="grid"
-                            gap="30px"
-                            gridTemplateColumns="repeat(3, minmax(0, 1fr))"
-                            sx={{
-                                '& > div': {
-                                    gridColumn: isNonMobile ? undefined : 'span 4'
-                                }
-                            }}
-                        >
                             <TextField
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="Email Address"
+                                label="Batch Name"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.email}
-                                name="email"
-                                error={!!touched.email && !!errors.email}
-                                helperText={touched.email && errors.email}
-                                sx={{ gridColumn: 'span 1' }}
-                            />
-                            <TextField
-                                fullWidth
-                                variant="filled"
-                                type="text"
-                                label="Contact Number Starting +639"
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                                value={values.contact}
-                                name="contact"
-                                error={!!touched.contact && !!errors.contact}
-                                helperText={touched.contact && errors.contact}
-                                sx={{ gridColumn: 'span 1' }}
-                            />
-                            <TextField
-                                fullWidth
-                                variant="filled"
-                                type="text"
-                                label="Address"
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                                value={values.address}
-                                name="address"
-                                error={!!touched.address && !!errors.address}
-                                helperText={touched.address && errors.address}
-                                sx={{ gridColumn: 'span 1' }}
+                                value={values.batchName}
+                                name="batchName"
+                                error={!!touched.batchName && !!errors.batchName}
+                                helperText={touched.batchName && errors.batchName}
+                                sx={{ gridColumn: 'span 2' }}
                             />
                         </Box>
                         <Box display="flex" justifyContent="end" mt="10px">

@@ -6,6 +6,7 @@ const PORT = 3000;
 
 // Middleware
 app.use(cors());
+app.use(express.json()); // Parsing JSON data in request
 
 app.get("/", (req, res) => {
 	res.send("<h1>HELLO FROM SABANG TRISKELION</h1>");
@@ -34,6 +35,7 @@ app.get("/chapters", async (req, res) => {
 // Get members from a specific chapter
 app.get("/chapter/:name/members", async (req, res) => {
 	const chapterName = req.params.name; // Get chapter name from the URL parameter
+	console.log(chapterName);
 
 	try {
 		// Check if the table exists in the database
@@ -58,6 +60,59 @@ app.get("/chapter/:name/members", async (req, res) => {
 	} catch (err) {
 		console.error("Error executing query", err.stack);
 		res.status(400).send("Database query error");
+	}
+});
+
+// PUT endpoint to insert form data into the correct chapter table
+app.put("/chapter/:name/add-member", async (req, res) => {
+	const chapterName = req.params.name; // Get chapter name from the URL parameter
+	const { name, alexisName, dateOfSurvival, gt, mi, batchName } = req.body; // Extracting form data
+
+	console.log(req.params.name);
+	console.log("Received data:", req.body);
+
+	try {
+		// Checking if table exists in database
+		const tableExistsResult = await triskelionDB.query(
+			`
+				SELECT EXISTS (
+					SELECT FROM information_schema.tables
+					WHERE table_schema = 'public' AND table_name = $1
+				)
+
+			`,
+			[chapterName]
+		);
+
+		const tableExists = tableExistsResult.rows[0].exists;
+		if (!tableExists) {
+			return res.status(400).json({ message: "Invalid chapter name" });
+		}
+
+		// Insert form data in the corresponding table
+		const insertQuery = `
+			INSERT INTO ${chapterName} (name, alexis_name, date_of_survival, gt, mi, batch_name, chapter)
+			VALUES ($1, $2, $3, $4, $5, $6, $7)
+			RETURNING *;
+		`;
+
+		const result = await triskelionDB.query(insertQuery, [
+			name,
+			alexisName,
+			dateOfSurvival,
+			gt,
+			mi,
+			batchName,
+			chapterName,
+		]);
+
+		res.status(201).json({
+			message: "Member added successfully",
+			member: result.rows[0], // Return the inserted member details
+		});
+	} catch (err) {
+		console.error("Error in inserting data", err.stack);
+		res.status(500).json({ message: "Server error", error: err.stack });
 	}
 });
 
