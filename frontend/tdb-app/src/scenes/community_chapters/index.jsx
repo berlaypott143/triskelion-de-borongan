@@ -103,18 +103,20 @@ const CommunityChapters = () => {
                         color: colors.accent[400],
                     },
                     "& .MuiDataGrid-columnHeader": {
-                        backgroundColor: colors.primary[700],
+                        backgroundColor: colors.neutral[900],
+                        color: colors.accent[400],
                         borderBottom: "none",
                     },
                     "& .MuiDataGrid-virtualScroller": {
-                        backgroundColor: colors.primary[500],
+                        backgroundColor: colors.neutral[900],
+                        color: colors.accent[400],
                     },
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
-                        backgroundColor: colors.primary[700],
+                        backgroundColor: colors.neutral[900],
                     },
                     "& .MuiCheckbox-root": {
-                        color: `${colors.accent[200]} !important`,
+                        color: `${colors.accent[400]} !important`,
                     },
                 }}
             >

@@ -62,6 +62,9 @@ const CustomSidebar = () => {
     return (
         <Box
             sx={{
+                "& .ps-sidebar-root": {
+                    borderRightWidth: 0
+                },
                 "& .pro-sidebar-inner": {
                     background: `${colors.primary[500]} !important`, // Primary background for Sidebar
                 },
@@ -70,7 +73,7 @@ const CustomSidebar = () => {
                 },
                 "& .pro-inner-item": {
                     padding: '5px 35px 5px 20px !important',
-                    color: `${colors.neutral[100]} !important`,  // Neutral color for text
+                    color: `${colors.primary[100]} !important`,  // Neutral color for text
                     transition: 'all 0.3s ease !important',  // Smooth transition for hover effects
                 },
                 "& .pro-inner-item:hover": {
@@ -87,7 +90,7 @@ const CustomSidebar = () => {
                     color: `${colors.accent[400]} !important`,  // Hover text color
                 },
                 "& .pro-menu-item.active .pro-inner-item": {
-                    backgroundColor: `${colors.primary[600]} !important`,  // Active item background
+                    backgroundColor: `${colors.primary[400]} !important`,  // Active item background
                 },
             }}
         >
@@ -214,6 +217,7 @@ const CustomSidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
+
                     </Box>
                 </Menu>
             </Sidebar>
