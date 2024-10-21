@@ -68,9 +68,9 @@ export const tokens = (mode) => ({
 					500: "#f5f5f5", // Softer white for larger areas
 				},
 				neutral: {
-					100: "#fafafa", // Light neutral (off-white)
+					100: "#2a2a2a", // dark neutral (off-white)
 					500: "#c3c3c3", // Gray for neutral elements
-					900: "#8f8f8f", // Darker gray for contrast
+					900: "#fafafa", // Darker gray for contrast
 				},
 		  }),
 });

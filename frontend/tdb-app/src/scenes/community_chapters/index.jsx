@@ -103,8 +103,8 @@ const CommunityChapters = () => {
                         color: colors.accent[400],
                     },
                     "& .MuiDataGrid-columnHeader": {
-                        backgroundColor: colors.neutral[900],
-                        color: colors.accent[400],
+                        backgroundColor: colors.accent[400],
+                        color: colors.neutral[100],
                         borderBottom: "none",
                     },
                     "& .MuiDataGrid-virtualScroller": {
@@ -113,7 +113,7 @@ const CommunityChapters = () => {
                     },
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
-                        backgroundColor: colors.neutral[900],
+                        backgroundColor: colors.accent[400],
                     },
                     "& .MuiCheckbox-root": {
                         color: `${colors.accent[400]} !important`,
