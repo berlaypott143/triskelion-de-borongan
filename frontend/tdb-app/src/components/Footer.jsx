@@ -16,7 +16,7 @@ const Footer = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginTop: 'auto', // This ensures it takes up remaining space at the bottom
+                marginTop: 'auto',
                 padding: '20px',
                 backgroundColor: `${colors.neutral[900]}`,
                 color: `${colors.neutral[100]}`,
@@ -30,7 +30,7 @@ const Footer = () => {
                 <IconButton
                     aria-label="GitHub"
                     color="inherit"
-                    href="https://github.com/your-github"
+                    href="https://github.com/berlaypott143"
                     target="_blank"
                 >
                     <GitHubIcon />
@@ -38,7 +38,7 @@ const Footer = () => {
                 <IconButton
                     aria-label="Facebook"
                     color="inherit"
-                    href="https://facebook.com/your-facebook"
+                    href="https://www.facebook.com/aldrinjay.achas.3"
                     target="_blank"
                 >
                     <FacebookIcon />
@@ -46,7 +46,7 @@ const Footer = () => {
                 <IconButton
                     aria-label="Instagram"
                     color="inherit"
-                    href="https://instagram.com/your-instagram"
+                    href="https://www.instagram.com/aldrinjay102123/"
                     target="_blank"
                 >
                     <InstagramIcon />
