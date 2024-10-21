@@ -50,8 +50,8 @@ const CustomSidebar = () => {
             setSelected('Contacts Information');
         } else if (path === '/about') {
             setSelected('About Information');
-        } else if (path === '/help') {
-            setSelected('Help Information');
+        } else if (path === '/faq') {
+            setSelected('FAQ Page');
         } else if (path === '/form') {
             setSelected('Form');
         } else {
@@ -190,7 +190,7 @@ const CustomSidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title='About Information'
+                            title='About Page'
                             to='/about'
                             icon={<AssignmentOutlinedIcon />}
                             selected={selected}
@@ -211,8 +211,8 @@ const CustomSidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title='Help Information'
-                            to='/help'
+                            title='FAQ Page'
+                            to='/faq'
                             icon={<HelpCenterOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
