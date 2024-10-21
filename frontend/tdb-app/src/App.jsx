@@ -8,6 +8,7 @@ import CommunityChapters from "./scenes/community_chapters"
 import Contacts from "./scenes/contacts"
 import Form from "./scenes/form"
 import FAQ from "./scenes/faq"
+import Footer from "./components/Footer"
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/form' element={<Form />} />
                 <Route path='/faq' element={<FAQ />} />
               </Routes>
+              <Footer />
             </main>
           </div>
         </ThemeProvider>

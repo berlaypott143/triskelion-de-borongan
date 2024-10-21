@@ -91,7 +91,7 @@ const CommunityChapters = () => {
             {/* DataGrid Section */}
             <Box
                 m="40px 0 0 0"
-                height="75vh"
+                minHeight="75vh"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",

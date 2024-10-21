@@ -53,7 +53,7 @@ const CustomSidebar = () => {
         } else if (path === '/faq') {
             setSelected('FAQ Page');
         } else if (path === '/form') {
-            setSelected('Form');
+            setSelected('Create User');
         } else {
             setSelected('Dashboard');
         }
@@ -63,7 +63,9 @@ const CustomSidebar = () => {
         <Box
             sx={{
                 "& .ps-sidebar-root": {
-                    borderRightWidth: 0
+                    minHeight: '110vh',
+                    borderRightWidth: 0,
+                    background: `${colors.neutral[900]} !important`,
                 },
                 "& .pro-sidebar-inner": {
                     background: `${colors.primary[500]} !important`, // Primary background for Sidebar
