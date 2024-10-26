@@ -56,6 +56,7 @@ app.get("/chapter/:name/members", async (req, res) => {
 
 		// Query the table if it exists
 		const result = await triskelionDB.query(`SELECT * FROM ${chapterName}`);
+		console.log(result);
 		res.json(result.rows); // Returns the list of members in the chapter
 	} catch (err) {
 		console.error("Error executing query", err.stack);
