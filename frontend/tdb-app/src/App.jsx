@@ -8,6 +8,7 @@ import CommunityChapters from "./scenes/community_chapters"
 import Contacts from "./scenes/contacts"
 import Form from "./scenes/form"
 import FAQ from "./scenes/faq"
+import About from "./scenes/about"
 import Footer from "./components/Footer"
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/contacts' element={<Contacts />} />
                 <Route path='/form' element={<Form />} />
                 <Route path='/faq' element={<FAQ />} />
+                <Route path='/about' element={<About />} />
               </Routes>
               <Footer />
             </main>
