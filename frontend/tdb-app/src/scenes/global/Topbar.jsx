@@ -1,17 +1,21 @@
 import { ColorModeContext, tokens } from "../../theme";
-import { useContext } from "react";
-import { Box, useTheme, IconButton } from "@mui/material";
+import { useContext, useState } from "react";
+import { Box, useTheme, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 
 const Topbar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
+    const [open, setOpen] = useState(false);
+
+    const handleSettingsOpen = () => setOpen(true);
+    const handleSettingsClose = () => setOpen(false);
 
     return (
         <Box display='flex' justifyContent='space-between' p={2}>
@@ -36,7 +40,22 @@ const Topbar = () => {
                         <LightModeOutlinedIcon />
                     )}
                 </IconButton>
+                <IconButton onClick={handleSettingsOpen}>
+                    <SettingsOutlinedIcon />
+                </IconButton>
             </Box>
+
+            {/* SETTINGS MODAL */}
+            <Dialog open={open} onClose={handleSettingsClose}>
+                <DialogTitle>Settings</DialogTitle>
+                <DialogContent>
+                    {/* Add settings options here */}
+                    <p>Example setting option</p>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleSettingsClose}>Close</Button>
+                </DialogActions>
+            </Dialog>
         </Box>
     );
 }
