@@ -20,15 +20,17 @@ app.get("/about", (req, res) => {
 // Get all table names (chapters)
 app.get("/chapters", async (req, res) => {
 	try {
+		console.log("Attempting to query database");
 		const result = await triskelionDB.query(`
       SELECT table_name 
       FROM information_schema.tables 
       WHERE table_schema = 'public'
     `);
+		console.log("Query result:", result);
 		res.json(result.rows); // Returns the list of tables (chapters)
 	} catch (err) {
-		console.error("Error executing query", err.stack);
-		res.status(400).send("Database query error");
+		console.error("Detailed error: ", err.stack);
+		res.status(400).json({ error: "Database query error", details: err.stack });
 	}
 });
 
@@ -51,7 +53,7 @@ app.get("/chapter/:name/members", async (req, res) => {
 
 		const tableExists = tableExistsResult.rows[0].exists;
 		if (!tableExists) {
-			return res.status(400).send("Invalid table name");
+			return res.status(400).json("Invalid table name");
 		}
 
 		// Query the table if it exists
@@ -60,7 +62,7 @@ app.get("/chapter/:name/members", async (req, res) => {
 		res.json(result.rows); // Returns the list of members in the chapter
 	} catch (err) {
 		console.error("Error executing query", err.stack);
-		res.status(400).send("Database query error");
+		res.status(400).json("Database query error");
 	}
 });
 
