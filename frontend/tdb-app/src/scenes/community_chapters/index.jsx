@@ -21,8 +21,14 @@ const CommunityChapters = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/chapters');
+                const response = await fetch('https://triskelion-de-borongan.onrender.com/chapters');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}, details: ${await response.text()}`);
+                }
+
                 const result = await response.json();
+                console.log(result);
                 setRows(result.map((table, index) => ({ id: index + 1, chapter: table.table_name })));
                 setChapters(result.map((table, index) => ({ id: index + 1, chapter: table.table_name })));
                 setLoading(false);
@@ -40,8 +46,9 @@ const CommunityChapters = () => {
         setLoading(true);
         navigate(`/community-chapters/${chapterName}`);
         try {
-            const response = await fetch(`http://localhost:3000/chapter/${chapterName}/members`);
+            const response = await fetch(`https://triskelion-de-borongan.onrender.com/chapter/${chapterName}/members`);
             const result = await response.json();
+            console.log(result)
             const formattedResult = result.map((member, index) => ({
                 ...member,
                 id: index + 1,
