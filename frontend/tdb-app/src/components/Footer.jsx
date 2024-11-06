@@ -24,9 +24,14 @@ const Footer = () => {
                 width: '100%' // Ensure it spans the width of the viewport
             }}
         >
-            <Typography variant="body1">
-                &copy; {new Date().getFullYear()} Aldrin Jay Achas
-            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                <Typography variant="body1">
+                    &copy; {new Date().getFullYear()} Aldrin Jay Achas
+                </Typography>
+                <Typography variant="body2">
+                    More projects in my <a href="https://github.com/berlaypott143" target="_blank" rel="noopener noreferrer">GitHub repository</a>
+                </Typography>
+            </Box>
             <Box>
                 <IconButton
                     aria-label="GitHub"
@@ -63,7 +68,7 @@ const Footer = () => {
                 <IconButton
                     aria-label="Render"
                     color="inherit"
-                    href="www.linkedin.com/in/aldrin-jay-33397529b"
+                    href="https://triskelion-de-borongan-frontend.onrender.com"
                     target="_blank"
                 >
                     <CloudSyncOutlinedIcon />
