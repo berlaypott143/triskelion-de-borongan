@@ -3,6 +3,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import CloudSyncOutlinedIcon from '@mui/icons-material/CloudSyncOutlined';
 import { tokens } from '../theme';
 
 const Footer = () => {
@@ -54,11 +55,20 @@ const Footer = () => {
                 <IconButton
                     aria-label="LinkedIn"
                     color="inherit"
-                    href="https://linkedin.com/in/your-linkedin"
+                    href="www.linkedin.com/in/aldrin-jay-33397529b"
                     target="_blank"
                 >
                     <LinkedInIcon />
                 </IconButton>
+                <IconButton
+                    aria-label="Render"
+                    color="inherit"
+                    href="www.linkedin.com/in/aldrin-jay-33397529b"
+                    target="_blank"
+                >
+                    <CloudSyncOutlinedIcon />
+                </IconButton>
+
             </Box>
         </Box>
     );
