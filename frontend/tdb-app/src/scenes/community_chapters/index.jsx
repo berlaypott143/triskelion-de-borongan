@@ -17,6 +17,9 @@ const CommunityChapters = () => {
     const [members, setMembers] = useState([]);
     const [selectedChapter, setSelectedChapter] = useState(null);
 
+
+    //const apiUrl = process.env.REACT_APP_API_URL;
+
     // Fetch chapter names
     useEffect(() => {
         const fetchData = async () => {
