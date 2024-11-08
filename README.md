@@ -69,6 +69,26 @@ triskelion-de-borongan/
     ├── routes/
     ├── triskelionDB
     └── package.json
+```
 
+# Contributing
+
+Contributions are welcome! If you wish to contribute, please follow these steps:
+
+* Fork the repository.
+* Create a new branch (git checkout -b feature/your-feature-name).
+* Commit your changes (git commit -m 'Add a new feature').
+* Push to the branch (git push origin feature/your-feature-name).
+* Create a pull request.
+
+# License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any questions or feedback, feel free to reach out at:
+- **Email**: [aldrinjaylej@gmail.com](mailto:aldrinjaylej@gmail.com)
+- **Facebook**: [aldrinjay.achas.3](https://www.facebook.com/aldrinjay.achas.3)
 
 
